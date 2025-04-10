@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TestCase Studio - Test Analysis Panel</title>
+  <link rel="stylesheet" href="panel.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>TestCase Studio</h1>
+      <div class="session-info">Session Started: <span class="info-timestamp">Not started</span></div>
+    </header>
+    
+    <div class="main-content">
+      <div class="sidebar">
+        <div class="info-grid">
+          <div class="info-item">
+            <div class="info-label">Browser</div>
+            <div class="info-value info-browser">Unknown</div>
+          </div>
+          <div class="info-item">
+            <div class="info-label">Operating System</div>
+            <div class="info-value info-os">Unknown</div>
+          </div>
+          <div class="info-item">
+            <div class="info-label">Screen Resolution</div>
+            <div class="info-value info-resolution">Unknown</div>
+          </div>
+        </div>
+        
+        <div class="options-group">
+          <label>
+            <input type="checkbox" id="showScreenshots" checked> 
+            Show Screenshots
+          </label>
+          <label>
+            <input type="checkbox" id="showSelectors" checked> 
+            Show Selectors
+          </label>
+        </div>
+        
+        <div class="steps-list-container">
+          <h2>Recorded Steps</h2>
+          <div class="steps-list">
+            <!-- Steps will be loaded here -->
+          </div>
+        </div>
+      </div>
+      
+      <div class="main-panel">
+        <div class="code-header">
+          <h2>Generated Test Code</h2>
+          <div class="code-controls">
+            <select id="codeLanguage" class="select-control-sm">
+              <option value="manual">Manual Test Case</option>
+              <option value="js-puppeteer">JavaScript (Puppeteer)</option>
+              <option value="js-playwright">JavaScript (Playwright)</option>
+              <option value="python-selenium">Python (Selenium)</option>
+              <option value="java-selenium">Java (Selenium)</option>
+              <option value="csharp-selenium">C# (Selenium)</option>
+            </select>
+            <button id="copyCode" class="btn-sm">Copy</button>
+            <button id="exportCode" class="btn-sm">Export</button>
+          </div>
+        </div>
+        
+        <div class="code-container">
+          <pre class="code-view">// Select a step to view details</pre>
+        </div>
+        
+        <div class="screenshots-container">
+          <h2>Screenshots</h2>
+          <div class="screenshot-gallery">
+            <!-- Screenshots will be loaded here -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <script src="panel.js"></script>
+</body>
+</html>

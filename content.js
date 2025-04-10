@@ -73,6 +73,8 @@ function removeEventListeners() {
   window.removeEventListener('beforeunload', handleNavigation);
 }
 
+// Improved code for handleClick and handleInput functions in content.js
+
 function handleClick(event) {
   if (!isRecording) return;
   
@@ -105,15 +107,15 @@ function handleClick(event) {
         height: element.offsetHeight
       }
     }, function(response) {
-      if (response && response.success) {
+      if (response && response.success && response.imageData) {
         step.screenshot = response.imageData;
-        
-        // Record step with screenshot
-        chrome.runtime.sendMessage({
-          action: 'recordStep',
-          step: step
-        });
       }
+      
+      // Record step (with or without screenshot)
+      chrome.runtime.sendMessage({
+        action: 'recordStep',
+        step: step
+      });
     });
   } else {
     // Record step without screenshot
@@ -124,6 +126,64 @@ function handleClick(event) {
   }
 }
 
+function handleInput(event) {
+  if (!isRecording) return;
+  
+  const element = event.target;
+  const elementInfo = getElementInfo(element);
+  let value = element.value;
+  
+  // Mask password input values
+  if (element.type === 'password') {
+    value = '********';
+  }
+  
+  // Create step data
+  const step = {
+    action: translate('input'),
+    description: `${translate('input')} "${value}" ${translate('on')} ${elementInfo.description}`,
+    selectors: null,
+    screenshot: null
+  };
+  
+  if (recordingOptions.captureSelectors) {
+    step.selectors = {
+      xpath: elementInfo.xpath,
+      css: elementInfo.cssSelector
+    };
+  }
+  
+  if (recordingOptions.captureScreenshots) {
+    // Request screenshot from background script with better error handling
+    chrome.runtime.sendMessage({
+      action: 'captureScreenshot',
+      elementInfo: {
+        x: element.getBoundingClientRect().left,
+        y: element.getBoundingClientRect().top,
+        width: element.offsetWidth,
+        height: element.offsetHeight
+      }
+    }, function(response) {
+      if (response && response.success && response.imageData) {
+        step.screenshot = response.imageData;
+      } else {
+        console.warn('Screenshot capture failed or returned no data');
+      }
+      
+      // Record step (with or without screenshot)
+      chrome.runtime.sendMessage({
+        action: 'recordStep',
+        step: step
+      });
+    });
+  } else {
+    // Record step without screenshot
+    chrome.runtime.sendMessage({
+      action: 'recordStep',
+      step: step
+    });
+  }
+}
 function handleInput(event) {
   if (!isRecording) return;
   

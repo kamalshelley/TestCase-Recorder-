@@ -105,10 +105,11 @@ function recordStep(step) {
   });
 }
 
+// Fix for the captureScreenshot function in background.js
 async function captureScreenshot(tabId, elementInfo) {
   try {
-    // Capture the visible tab
-    const [data] = await chrome.tabs.captureVisibleTab(null, {format: 'png'});
+    // Capture the visible tab - corrected to not destructure the result
+    const data = await chrome.tabs.captureVisibleTab(null, {format: 'png'});
     
     if (elementInfo) {
       // We would highlight the element here if we had canvas access
