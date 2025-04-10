@@ -1,0 +1,69 @@
+// popup.html - The extension popup interface
+<!DOCTYPE html>
+<html>
+<head>
+  <title>TestCase Recorder</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div class="container">
+    <h1>TestCase Recorder</h1>
+    
+    <div class="controls">
+      <button id="startRecording" class="btn primary">Start Recording</button>
+      <button id="stopRecording" class="btn danger" disabled>Stop Recording</button>
+      <button id="clearRecording" class="btn secondary" disabled>Clear Recording</button>
+    </div>
+    
+    <div class="record-options">
+      <div class="option">
+        <input type="checkbox" id="captureScreenshots" checked>
+        <label for="captureScreenshots">Capture Screenshots</label>
+      </div>
+      <div class="option">
+        <input type="checkbox" id="recordScreen">
+        <label for="recordScreen">Record Screen</label>
+      </div>
+      <div class="option">
+        <input type="checkbox" id="captureSelectors" checked>
+        <label for="captureSelectors">Generate Selectors</label>
+      </div>
+    </div>
+    
+    <div class="language-selector">
+      <label for="language">Record Steps in:</label>
+      <select id="language">
+        <option value="en">English</option>
+        <option value="de">German</option>
+        <option value="fr">French</option>
+        <option value="es">Spanish</option>
+        <option value="zh">Chinese</option>
+      </select>
+    </div>
+    
+    <div class="recording-status" id="recordingStatus">
+      <span>Not Recording</span>
+    </div>
+    
+    <div class="steps-container">
+      <h2>Recorded Steps</h2>
+      <div id="recordedSteps" class="steps-list">
+        <p class="empty-state">No steps recorded yet</p>
+      </div>
+    </div>
+    
+    <div class="actions">
+      <button id="exportTestCase" class="btn secondary" disabled>Export Test Case</button>
+      <button id="copySteps" class="btn secondary" disabled>Copy Steps</button>
+    </div>
+    
+    <div class="system-info">
+      <div id="browserInfo">Browser: </div>
+      <div id="osInfo">OS: </div>
+      <div id="resolutionInfo">Resolution: </div>
+      <div id="timestampInfo">Start Time: </div>
+    </div>
+  </div>
+  <script src="popup.js"></script>
+</body>
+</html>

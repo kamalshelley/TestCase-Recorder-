@@ -1,0 +1,203 @@
+// popup.css - Styling for the popup interface
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  width: 380px;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  padding: 15px;
+}
+
+h1 {
+  font-size: 18px;
+  margin-top: 0;
+  margin-bottom: 15px;
+  color: #333;
+}
+
+h2 {
+  font-size: 16px;
+  margin-top: 15px;
+  margin-bottom: 10px;
+}
+
+.controls {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.btn {
+  padding: 8px 15px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.primary {
+  background-color: #4CAF50;
+  color: white;
+}
+
+.primary:hover {
+  background-color: #45a049;
+}
+
+.danger {
+  background-color: #f44336;
+  color: white;
+}
+
+.danger:hover {
+  background-color: #d32f2f;
+}
+
+.secondary {
+  background-color: #f0f0f0;
+  color: #333;
+}
+
+.secondary:hover {
+  background-color: #e0e0e0;
+}
+
+.btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.record-options {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 15px;
+  border: 1px solid #ddd;
+  padding: 10px;
+  border-radius: 4px;
+}
+
+.option {
+  display: flex;
+  align-items: center;
+}
+
+.option input {
+  margin-right: 8px;
+}
+
+.language-selector {
+  margin-bottom: 15px;
+  display: flex;
+  align-items: center;
+}
+
+.language-selector label {
+  margin-right: 10px;
+}
+
+.language-selector select {
+  padding: 5px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+
+.recording-status {
+  background-color: #f8f8f8;
+  padding: 8px;
+  border-radius: 4px;
+  margin-bottom: 15px;
+  text-align: center;
+  border: 1px solid #ddd;
+}
+
+.recording-status.active {
+  background-color: #ffebee;
+  border-color: #f44336;
+  color: #d32f2f;
+}
+
+.steps-container {
+  max-height: 300px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  margin-bottom: 15px;
+}
+
+.steps-list {
+  padding: 10px;
+}
+
+.step-item {
+  padding: 8px;
+  border-bottom: 1px solid #eee;
+  display: flex;
+  flex-direction: column;
+}
+
+.step-item:last-child {
+  border-bottom: none;
+}
+
+.step-header {
+  display: flex;
+  justify-content: space-between;
+  font-weight: 500;
+  margin-bottom: 5px;
+}
+
+.step-details {
+  font-size: 13px;
+  color: #666;
+}
+
+.step-selectors {
+  font-family: monospace;
+  font-size: 12px;
+  background-color: #f5f5f5;
+  padding: 5px;
+  border-radius: 3px;
+  margin-top: 5px;
+  word-break: break-all;
+}
+
+.empty-state {
+  color: #999;
+  text-align: center;
+  font-style: italic;
+}
+
+.actions {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.system-info {
+  background-color: #f8f8f8;
+  padding: 10px;
+  border-radius: 4px;
+  font-size: 12px;
+  color: #666;
+  border: 1px solid #ddd;
+}
+
+.system-info div {
+  margin-bottom: 3px;
+}
+
+.system-info div:last-child {
+  margin-bottom: 0;
+}
+
+.step-thumbnail {
+  max-width: 100%;
+  height: auto;
+  margin-top: 8px;
+  border: 1px solid #ddd;
+  border-radius: 3px;
+}

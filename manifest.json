@@ -1,0 +1,36 @@
+// manifest.json - The extension configuration file
+{
+  "manifest_version": 3,
+  "name": "TestCase Recorder",
+  "version": "1.0",
+  "description": "Record user actions and generate test cases automatically",
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "images/icon16.png",
+      "48": "images/icon48.png",
+      "128": "images/icon128.png"
+    }
+  },
+  "permissions": [
+    "activeTab",
+    "scripting",
+    "storage",
+    "tabs",
+    "tabCapture",
+    "desktopCapture"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"],
+      "all_frames": true
+    }
+  ],
+  "host_permissions": [
+    "<all_urls>"
+  ]
+}
